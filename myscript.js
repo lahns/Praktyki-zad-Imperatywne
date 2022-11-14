@@ -38,9 +38,12 @@ function calculate(num1, num2, option){
         "add" : function(){ return num1 + num2},
         "substract" : function(){ return num1 - num2},
         "multiply" : function(){ return num1 * num2},
-        "divide" : function(){ return (num2 !== 0) ? num1 / num2 : "dzielenie przez zero"}
+        "divide" : function(){ return (num2 !== 0) ? num1 / num2 : "dzielenie przez zero"},
+        "power" : function(num1, num2){return num2== 0 ? 1 : num1 * operations["power"](num1, --num2)},
+        "logarithm" : function(num1){return (num1 > 1) ? 1 + operations["logarithm"](num1 / 2) : 0},
+        "modulo" : function(){ return num1 % num2}
     }
-    return operations[option]();
+    return operations[option](num1, num2);
 }
 
 function palindrome(var1){
